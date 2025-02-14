@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="tic-tac-toe">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+            <input type="number" name="number" id="insertNum" placeholder="Please Enter box Number">
+
+            <div class="buttons">
+                <a  id="X">X</a>
+                <a  id="O">O</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let boxes = ["", "", "", "", "", "", "", "", ""]
+
+        let currentPlayer = "X";
+       
+
+        let index = document.getElementById("insertNum").addEventListener("input", function () {
+            index = this.value;
+        });
+
+        // function clickX(index) {
+        //     document.getElementById('X').addEventListener("click", function () {
+        //         if (boxes[index] === "") {
+        //             boxes[index] = currentPlayer;
+        //             document.getElementsByClassName("box")[index].textContent = "X";
+        //             currentPlayer = "O"
+        //             console.log("hello")
+        //         }
+
+                
+        //     })
+
+        // }
+
+        // function clickO(index) {
+        //     btnO.addEventListener("click", function () {
+        //         if (boxes[index] === "") {
+        //             boxes[index] = currentPlayer;
+        //             document.getElementsByClassName("box")[index].textContent = "O";
+        //             currentPlayer = "X"
+        //         }
+        //     })
+        // }
+
+        function clickX() {
+        document.getElementById("X").addEventListener("click", function () {  
+            if (index >= 0 && index < 9) { // 
+                if (boxes[index] === "") {
+                    boxes[index] = "X";
+                    document.getElementsByClassName("box")[index].textContent = "X";
+                } else {
+                    alert("Cell already occupied!");
+                }
+            } else {
+                alert("Invalid index! Choose between 0-8.");
+            }
+        });
+    }
+
+    function clickO() {
+        document.getElementById("O").addEventListener("click", function () {
+            if (index >= 0 && index < 9) { // 
+                if (boxes[index] === "") {
+                    boxes[index] = "O";
+                    document.getElementsByClassName("box")[index].textContent = "O";
+                } else {
+                    alert("Cell already occupied!");
+                }
+            } else {
+                alert("Invalid index! Choose between 0-8.");
+            }
+        });
+    }
+
+    clickX(); 
+    clickO();
+    </script>
+</body>
+
+</html>
