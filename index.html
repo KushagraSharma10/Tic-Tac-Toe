@@ -41,64 +41,6 @@
             index = this.value;
         });
 
-        // function clickX(index) {
-
-        //     document.getElementById('X').addEventListener("click", function () {
-        //         if (boxes[index] === "") {
-        //             boxes[index] = currentPlayer;
-        //             document.getElementsByClassName("box")[index].textContent = "X";
-        //             currentPlayer = "O"
-        //             console.log("hello")
-        //         }
-
-
-        //     })
-
-        // }
-
-        // function clickO(index) {
-        //     btnO.addEventListener("click", function () {
-        //         if (boxes[index] === "") {
-        //             boxes[index] = currentPlayer;
-        //             document.getElementsByClassName("box")[index].textContent = "O";
-        //             currentPlayer = "X"
-        //         }
-        //     })
-        // }
-
-        //     function clickX() {
-        //     document.getElementById("X").addEventListener("click", function () {  
-        //         if (index >= 0 && index < 9) { // 
-        //             if (boxes[index] === "") {
-        //                 boxes[index] = "X";
-        //                 document.getElementsByClassName("box")[index].textContent = "X";
-        //             } else {
-        //                 alert("Cell already occupied!");
-        //             }
-        //         } else {
-        //             alert("Invalid index! Choose between 0-8.");
-        //         }
-        //     });
-        // }
-
-        // function clickO() {
-        //     document.getElementById("O").addEventListener("click", function () {
-        //         if (index >= 0 && index < 9) { // 
-        //             if (boxes[index] === "") {
-        //                 boxes[index] = "O";
-        //                 document.getElementsByClassName("box")[index].textContent = "O";
-        //             } else {
-        //                 alert("Box is already filled");
-        //             }
-        //         } else {
-        //             alert("Invalid index! Choose between 0-8.");
-        //         }
-        //     });
-        // }
-
-        // clickX(); 
-        // clickO();
-
         // Check for winner
         function checkWinner(player) {
             const winCombos = [
@@ -144,7 +86,12 @@
                 if (index >= 0 && index < 9 && boxes[index] === "") {
                     boxes[index] = "O";
                     document.getElementsByClassName("box")[index].textContent = "O";
-                    if (checkWinner("O")) alert("O Wins!");
+                    if (checkWinner("O")) {
+                        setTimeout(function () {
+                            alert("O Wins!");
+                            location.reload();
+                        }, 3000);
+                    } 
                 }
             });
         }
