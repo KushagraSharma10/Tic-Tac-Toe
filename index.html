@@ -25,8 +25,8 @@
             <input type="number" name="number" id="insertNum" placeholder="Please Enter box Number">
 
             <div class="buttons">
-                <a  id="X">X</a>
-                <a  id="O">O</a>
+                <a id="X">X</a>
+                <a id="O">O</a>
             </div>
         </div>
     </div>
@@ -35,13 +35,14 @@
         let boxes = ["", "", "", "", "", "", "", "", ""]
 
         let currentPlayer = "X";
-       
+
 
         let index = document.getElementById("insertNum").addEventListener("input", function () {
             index = this.value;
         });
 
         // function clickX(index) {
+
         //     document.getElementById('X').addEventListener("click", function () {
         //         if (boxes[index] === "") {
         //             boxes[index] = currentPlayer;
@@ -50,7 +51,7 @@
         //             console.log("hello")
         //         }
 
-                
+
         //     })
 
         // }
@@ -65,38 +66,92 @@
         //     })
         // }
 
+        //     function clickX() {
+        //     document.getElementById("X").addEventListener("click", function () {  
+        //         if (index >= 0 && index < 9) { // 
+        //             if (boxes[index] === "") {
+        //                 boxes[index] = "X";
+        //                 document.getElementsByClassName("box")[index].textContent = "X";
+        //             } else {
+        //                 alert("Cell already occupied!");
+        //             }
+        //         } else {
+        //             alert("Invalid index! Choose between 0-8.");
+        //         }
+        //     });
+        // }
+
+        // function clickO() {
+        //     document.getElementById("O").addEventListener("click", function () {
+        //         if (index >= 0 && index < 9) { // 
+        //             if (boxes[index] === "") {
+        //                 boxes[index] = "O";
+        //                 document.getElementsByClassName("box")[index].textContent = "O";
+        //             } else {
+        //                 alert("Box is already filled");
+        //             }
+        //         } else {
+        //             alert("Invalid index! Choose between 0-8.");
+        //         }
+        //     });
+        // }
+
+        // clickX(); 
+        // clickO();
+
+        // Check for winner
+        function checkWinner(player) {
+            const winCombos = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],[0, 3, 6], [1, 4, 7], [2, 5, 8],[0, 4, 8], [2, 4, 6]
+            ];
+
+            for (let i = 0; i < winCombos.length; i++) {
+                const combo = winCombos[i];
+                if (boxes[combo[0]] === player &&
+                    boxes[combo[1]] === player &&
+                    boxes[combo[2]] === player) {
+                    // Highlight winning boxes
+                    combo.forEach(i => {
+                        document.getElementsByClassName("box")[i].style.backgroundColor = "#4CAF50";
+                    });
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // X button click
         function clickX() {
-        document.getElementById("X").addEventListener("click", function () {  
-            if (index >= 0 && index < 9) { // 
-                if (boxes[index] === "") {
+            document.getElementById("X").addEventListener("click", function () {
+                if (index >= 0 && index < 9 && boxes[index] === "") {
                     boxes[index] = "X";
                     document.getElementsByClassName("box")[index].textContent = "X";
-                } else {
-                    alert("Cell already occupied!");
-                }
-            } else {
-                alert("Invalid index! Choose between 0-8.");
-            }
-        });
-    }
+                    if (checkWinner("X")) {
 
-    function clickO() {
-        document.getElementById("O").addEventListener("click", function () {
-            if (index >= 0 && index < 9) { // 
-                if (boxes[index] === "") {
+                        setTimeout(function () {
+                            alert("X Wins!");
+                            location.reload();
+                        }, 3000);
+                    }
+                }
+            });
+        }
+
+
+        // O button click
+        function clickO() {
+            document.getElementById("O").addEventListener("click", function () {
+                if (index >= 0 && index < 9 && boxes[index] === "") {
                     boxes[index] = "O";
                     document.getElementsByClassName("box")[index].textContent = "O";
-                } else {
-                    alert("Cell already occupied!");
+                    if (checkWinner("O")) alert("O Wins!");
                 }
-            } else {
-                alert("Invalid index! Choose between 0-8.");
-            }
-        });
-    }
+            });
+        }
 
-    clickX(); 
-    clickO();
+
+        clickX();
+        clickO();
     </script>
 </body>
 
