@@ -41,7 +41,6 @@
             index = this.value;
         });
 
-        // Check for winner
         function checkWinner(player) {
             const winCombos = [
                 [0, 1, 2], [3, 4, 5], [6, 7, 8],[0, 3, 6], [1, 4, 7], [2, 5, 8],[0, 4, 8], [2, 4, 6]
@@ -52,7 +51,7 @@
                 if (boxes[combo[0]] === player &&
                     boxes[combo[1]] === player &&
                     boxes[combo[2]] === player) {
-                    // Highlight winning boxes
+                   
                     combo.forEach(i => {
                         document.getElementsByClassName("box")[i].style.backgroundColor = "#4CAF50";
                     });
@@ -72,7 +71,7 @@
                         setTimeout(function () {
                             alert("X Wins!");
                             location.reload();
-                        }, 3000);
+                        }, 1000);
                     }
                 }
             });
