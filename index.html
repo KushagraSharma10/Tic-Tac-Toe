@@ -25,14 +25,17 @@
             <input type="number" name="number" id="insertNum" placeholder="Please Enter box Number">
 
             <div class="buttons">
-                <a id="X">X</a>
-                <a id="O">O</a>
+                <button id="X">X</>
+                <button id="O">O</>
             </div>
         </div>
     </div>
 
     <script>
         let boxes = ["", "", "", "", "", "", "", "", ""]
+
+        let buttonX = document.getElementById("X");
+        let buttonO = document.getElementById("O");
 
         let currentPlayer = "X";
 
@@ -62,16 +65,20 @@
         }
 
         function clickX() {
-            document.getElementById("X").addEventListener("click", function () {
+           buttonX.addEventListener("click", function () {
                 if (index >= 0 && index < 9 && boxes[index] === "") {
                     boxes[index] = "X";
                     document.getElementsByClassName("box")[index].textContent = "X";
+                    
                     if (checkWinner("X")) {
 
                         setTimeout(function () {
                             alert("X Wins!");
                             location.reload();
                         }, 1000);
+                    } else{
+                         buttonO.disabled = false;
+                        buttonX.disabled = true;
                     }
                 }
             });
@@ -79,7 +86,7 @@
 
 
         function clickO() {
-            document.getElementById("O").addEventListener("click", function () {
+           buttonO.addEventListener("click", function () {
                 if (index >= 0 && index < 9 && boxes[index] === "") {
                     boxes[index] = "O";
                     document.getElementsByClassName("box")[index].textContent = "O";
@@ -87,16 +94,22 @@
                         setTimeout(function () {
                             alert("O Wins!");
                             location.reload();
-                        }, 3000);
-                    } 
+                        }, 1000);
+                    } else{
+                        buttonO.disabled = true;
+                        buttonX.disabled = false;
+                    }
                 }
             });
         }
 
 
+        buttonO.disabled = true;
+        buttonX.disabled = false;
         clickX();
         clickO();
     </script>
+
 </body>
 
 </html>

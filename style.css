@@ -77,7 +77,7 @@ html, body{
     gap: 1vw;
 }
 
-.buttons a{
+.buttons button{
     padding:.7vw 1vw;
     width: 100%;
     /* background-color: red; */
