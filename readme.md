@@ -6,13 +6,13 @@ A simple Tic-Tac-Toe game built using HTML, CSS, and JavaScript. Players take tu
 
 # Features
 
-    Two-player mode: X and O take turns.
+ 1. Two-player mode: X and O take turns.
 
-    Input-based selection: Players enter a number to mark a box.
+ 2. Input-based selection: Players enter a number to mark a box.
 
-    Win detection: Highlights the winning combination.
+ 3. Win detection: Highlights the winning combination.
 
-    Replay functionality: Game resets after a winner is declared.
+ 4. Replay functionality: Game resets after a winner is declared.
 
 # How to Play
 
