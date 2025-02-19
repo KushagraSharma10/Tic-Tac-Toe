@@ -47,16 +47,35 @@ html, body{
 }
 
 .box{
+    position: relative;
     width: 9.97vw;
     height: 10vw;
-    /* padding: 4.94vw; */
     background-color: rgb(28, 24, 31);
     border: 1px solid #2f2323;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     color: white;
 }
+
+.box span{ 
+    position: absolute;
+    top: .5vw;
+    left: .5vw;
+    transform: translate(-50%, -50%);
+    /* font-size: 2vw; */
+    font-weight: 600;
+
+}
+
+.box .draw{
+    height: 1vw;
+    width: 1vw;
+}
+
+/* .tic-tac-toe :nth-child(2) .draw{
+    /* background-color: red; */
+ 
 
 #insertNum{
     padding: .7vw 1vw;

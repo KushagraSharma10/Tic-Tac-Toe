@@ -1,14 +1,21 @@
 let boxes = ["", "", "", "", "", "", "", "", ""]
 
+let index = 0;
+
+let box = document.getElementsByClassName("box");
 let buttonX = document.getElementById("X");
 let buttonO = document.getElementById("O");
+
+
 
 let currentPlayer = "X";
 
 
-let index = document.getElementById("insertNum").addEventListener("input", function () {
-    index = this.value;
+index = document.getElementById("insertNum").addEventListener("input", function () {
+    index = parseInt(this.value);
 });
+
+
 
 function checkWinner(player) {
     const winCombos = [
@@ -34,7 +41,9 @@ function clickX() {
    buttonX.addEventListener("click", function () {
         if (index >= 0 && index < 9 && boxes[index] === "") {
             boxes[index] = "X";
-            document.getElementsByClassName("box")[index].textContent = "X";
+            let drawBox = box[index].querySelector(".draw");
+            drawBox.textContent = "X"; 
+
             
             if (checkWinner("X")) {
 
@@ -55,7 +64,8 @@ function clickO() {
    buttonO.addEventListener("click", function () {
         if (index >= 0 && index < 9 && boxes[index] === "") {
             boxes[index] = "O";
-            document.getElementsByClassName("box")[index].textContent = "O";
+            let drawBox = box[index].querySelector(".draw");
+            drawBox.textContent = "O";
             if (checkWinner("O")) {
                 setTimeout(function () {
                     alert("O Wins!");
